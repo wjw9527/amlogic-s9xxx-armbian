@@ -161,7 +161,7 @@ on:
           - 6.1.1_6.6.1
           - 5.4.1
           - 5.10.1
-          - 5.15.1
+          - 5.15.144
           - 6.1.1
           - 6.6.1
       auto_kernel:
@@ -248,7 +248,7 @@ jobs:
         if: ${{ steps.init.outputs.status }} == 'success' && !cancelled()
         run: |
           df -hT ${PWD}
-          git clone -q --single-branch --depth=1 --branch=main https://github.com/armbian/build.git build
+          git clone -q --single-branch --depth=1 -b v23.11.2 https://github.com/armbian/build.git build
           echo "status=success" >> ${GITHUB_OUTPUT}
 
       - name: Compile Armbian [ ${{ inputs.set_release }} ]
